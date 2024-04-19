@@ -12,17 +12,17 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Configure AWS Credentials
-        uses: aws-actions/configure-aws-credentials@v1
+        uses: aws-actions/configure-aws-credentials@v2
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: ${{ secrets.AWS_REGION }}
+          aws-region: us-east-2
       - name: Install modules
         run: npm ci
       - name: Build application
         run: npm run build
       - name: Deploy to S3
-        run: aws s3 sync --delete ./dist/ s3://${{ secrets.AWS_S3_BUCKET }}
+        run: aws s3 sync --delete ./dist/ s3://${{ secrets.AWS_BUCKET_ID }}
       - name: Create CloudFront invalidation
-        run: aws cloudfront create-invalidation --distribution-id ${{ secrets.AWS_DISTRIBUTION_ARN }} --paths "/*"
+        run: aws cloudfront create-invalidation --distribution-id ${{ secrets.AWS_DISTRIBUTION_ID }} --paths "/*"
 
