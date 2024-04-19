@@ -1,9 +1,11 @@
 ---
+// Import necessary components and types
 import WidgetWrapper from '../ui/WidgetWrapper.astro';
 import type { CallToAction, Widget } from '~/types';
 import Headline from '~/components/ui/Headline.astro';
 import Button from "~/components/ui/Button.astro"
 
+// Define the properties that this component accepts
 interface Props extends Widget {
   title?: string;
   subtitle?: string;
@@ -12,6 +14,7 @@ interface Props extends Widget {
   actions?: string | CallToAction[];
 }
 
+// Destructure the properties from Astro.props
 const {
   title = await Astro.slots.render('title'),
   subtitle = await Astro.slots.render('subtitle'),
@@ -25,10 +28,12 @@ const {
 } = Astro.props as Props;
 ---
 
+<!-- Use the WidgetWrapper component to wrap the content of this component -->
 <WidgetWrapper id={id} isDark={isDark} containerClass={`max-w-6xl mx-auto ${classes?.container ?? ''}`} bg={bg}>
   <div
-    class="max-w-3xl mx-auto text-center p-6 rounded-md shadow-xl dark:shadow-none dark:border dark:border-slate-600"
+    class="max-w-3xl mx-auto text-center p-6 rounded-md shadow-xl border dark:shadow-XL dark:border dark:border-slate-600 bg-yellow-100 dark:bg-stone-950"
   >
+    <!-- Use the Headline component to display the title, subtitle, and tagline -->
     <Headline
       title={title}
       subtitle={subtitle}
@@ -39,6 +44,7 @@ const {
         subtitle: 'text-xl text-muted dark:text-slate-400',
       }}
     />
+    <!-- If there are any actions, display them using the Button component -->
     {
       actions && (
         <div class="max-w-xs sm:max-w-md m-auto flex flex-nowrap flex-col sm:flex-row sm:justify-center gap-4 mt-6">

@@ -1,0 +1,222 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Note from '~/components/widgets/Note.astro';
+import Steps from '~/components/widgets/Steps.astro';
+import Content from '~/components/widgets/Content.astro';
+import FAQs from '~/components/widgets/FAQs.astro';
+import Stats from '~/components/widgets/Stats.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+
+const metadata = {
+  title: 'Doglava - I got that funk in me',
+  ignoreTitleTemplate: true,
+};
+---
+
+<Layout metadata={metadata}>
+  <!-- Hero Widget ******************* -->
+
+  <Hero
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Booking',
+        href: 'mailto:booking@doglava.com?subject=Booking%20Request',
+        target: '_blank',
+        icon: 'tabler:book',
+      },
+      { text: 'Listen', href: '/listen', icon: 'tabler:headphones' },
+      { text: 'Tickets', href: '/tickets', icon: 'tabler:ticket' },
+    ]}
+    image={{ src: '~/assets/images/ss_hs.png', alt: 'Doglava Sunday Sounds Headshot' }}
+  >
+    <Fragment slot="title"> Introducing Doglava </Fragment>
+
+    <Fragment slot="subtitle">
+      <span class="hidden sm:inline">
+        <span class="font-semibold">Doglava</span> tries hard and has fun.
+      </span>
+      <span class="block mb-1 sm:hidden font-bold text-red-800">Funk.</span>
+      Originals? Covers? Parties? Weddings? These dogs don't funk up.
+    </Fragment>
+  </Hero>
+
+  <!-- Note Widget ******************* -->
+
+  <Note />
+
+  <!-- Content Widget **************** -->
+
+  <Content
+    isReversed
+    id="our-story"
+    tagline='No, it&apos;s pronounced "Doglava..."'
+    title="You Seen These Dogs Live?"
+    items={[
+      {
+        title: 'In Dog We Trust',
+        description:
+          'Doglava is a band that plays music. They are not dogs. They are not lava. They are not a dog made of lava. Unless...?',
+      },
+    ]}
+    image={{
+      src: '~/assets/images/meg_al_rino.jpg',
+      alt: 'Rino',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Our Story</h3>
+      Serving tasty tunes since 2017. Based out of Kansas City, we play on the streets, we play for treats, and we play for
+      keeps!
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-orange-50 dark:bg-stone-950"></div>
+    </Fragment>
+  </Content>
+
+  <!-- Content Widget **************** -->
+
+  <Content
+    isAfterContent
+    items={[
+      {
+        title: 'Real Music - NOT Jazz',
+        description: 'They are no Roy Donk, nor would they even want to be a regular guest on The Colgate Hour.',
+      },
+    ]}
+    image={{
+      src: '~/assets/images/porchfest2.JPG',
+      alt: 'Porchfest',
+    }}
+  >
+    <Fragment slot="content">You can tell your friends about that band no one knows about.</Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-orange-100 dark:bg-stone-900"></div>
+    </Fragment>
+  </Content>
+
+  <!-- Content Widget **************** -->
+
+  <Content
+    isReversed
+    isAfterContent
+    items={[
+      {
+        title: 'Live, laugh, FEET!',
+        description:
+          'Captivate your audience with interactive elements, intuitive navigation, and visually appealing layouts, encouraging longer visits.',
+      },
+    ]}
+    image={{
+      src: '~/assets/images/f325.jpg',
+      alt: 'F325',
+    }}
+  >
+    <Fragment slot="content">Feet pics for free.</Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-orange-50 dark:bg-stone-950"></div>
+    </Fragment>
+  </Content>
+
+  <!-- Steps Widget ****************** -->
+
+  <Steps
+    id="lavaheads"
+    title="Want to be a Lava-Head?"
+    items={[
+      {
+        title: 'Step 1: <span class="font-medium">Follow Us!</span>',
+        description:
+          '<a href="https://open.spotify.com/artist/2DxML1TqtSfKbvmaXb3o4g" class="text-green-500">Spotify</a>, <a href="https://music.apple.com/us/artist/doglava/1465208865" class="text-yellow-500">Apple Music</a>, <a href="https://www.instagram.com/doglava/?hl=en" class="text-pink-500">Instagram</a>, <a href="https://www.facebook.com/doglava/" class="text-blue-500">Facebook</a>. We work so funking hard.',
+        icon: 'tabler:heart-plus',
+      },
+      {
+        title: 'Step 2: <span class="font-medium">Buy Our Merch!</>',
+        description: 'Shirts, hats, stickers, life advice. We just need money. Online store coming soon!',
+        icon: 'tabler:shirt',
+      },
+      {
+        title: 'Step 3: <span class="font-medium">Come See the Show!</span>',
+        description: 'You can touch a drumstick. Maybe a guitar. Do not stare at our brass.',
+        icon: 'tabler:ticket',
+      },
+      {
+        title: 'Step 4: <span class="font-medium">Tell Your Friends!</span>',
+        description: '"You probably have never heard of them."',
+        icon: 'tabler:hand-rock',
+      },
+    ]}
+    image={{
+      src: '~/assets/images/funny_fan.jpg',
+      alt: 'Steps image',
+    }}
+  />
+
+  <FAQs
+    id="faq"
+    title="Frequently Asked Questions"
+    subtitle="We have dozens of fans, here's what they need to know:"
+    tagline="FAQs"
+    classes={{ container: 'max-w-6xl bg-yellow-100 dark:bg-stone-900' }}
+    items={[
+      {
+        title: 'Is it Dog-Lava or Doglavah?',
+        description: 'Yes.',
+      },
+      {
+        title: 'Will you play for my [event here]?',
+        description: 'Yes.',
+      },
+      {
+        title: 'Is Chase balding?',
+        description: 'Yes.',
+      },
+      {
+        title: 'Is Dillon balding?',
+        description: 'Yes.',
+      },
+
+      {
+        title: 'Can you play my favorite song?',
+        description: 'Yes.',
+      },
+      {
+        title: 'Do you like cats too?',
+        description: 'Yes.',
+      },
+    ]}
+  />
+
+  <!-- Stats Widget ****************** -->
+
+  <Stats
+    stats={[
+      { title: 'Listens', amount: '420K' },
+      { title: 'Follows', amount: '69K' },
+      { title: 'Fans', amount: 'Like 13' },
+      { title: 'Earnings', amount: 'LOL' },
+    ]}
+  />
+
+  <!-- CallToAction Widget *********** -->
+
+  <CallToAction
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Book Today',
+        href: 'mailto:booking@doglava.com?subject=Booking%20Request',
+        target: '_blank',
+        icon: 'tabler:book',
+      },
+    ]}
+  >
+    <Fragment slot="title"> Doglava needs pets! </Fragment>
+
+    <Fragment slot="subtitle"> Support struggling musicians. Dogs gotta eat! </Fragment>
+  </CallToAction>
+</Layout>

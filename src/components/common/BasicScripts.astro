@@ -9,6 +9,7 @@ import { UI } from '~/utils/config';
 
   window.basic_script = true;
 
+// Function to apply the theme (dark or light)
   function applyTheme(theme) {
     if (theme === 'dark') {
       document.documentElement.classList.add('dark');
@@ -16,7 +17,7 @@ import { UI } from '~/utils/config';
       document.documentElement.classList.remove('dark');
     }
   }
-
+// Function to initialize the theme based on user preference or system settings
   const initTheme = function () {
     if ((defaultTheme && defaultTheme.endsWith(':only')) || (!localStorage.theme && defaultTheme !== 'system')) {
       applyTheme(defaultTheme.replace(':only', ''));
@@ -31,6 +32,7 @@ import { UI } from '~/utils/config';
   };
   initTheme();
 
+  // Function to attach an event listener to a DOM element
   function attachEvent(selector, event, fn) {
     const matches = typeof selector === 'string' ? document.querySelectorAll(selector) : selector;
     if (matches && matches.length) {
@@ -40,6 +42,7 @@ import { UI } from '~/utils/config';
     }
   }
 
+   // Function to execute when the page loads
   const onLoad = function () {
     let lastKnownScrollPosition = window.scrollY;
     let ticking = true;
@@ -138,6 +141,8 @@ import { UI } from '~/utils/config';
       }
     });
   };
+
+  // Function to execute when the page is shown
   const onPageShow = function () {
     document.documentElement.classList.add('motion-safe:scroll-smooth');
     const elem = document.querySelector('[data-aw-toggle-menu]');
@@ -150,9 +155,11 @@ import { UI } from '~/utils/config';
     document.querySelector('#header nav')?.classList.add('hidden');
   };
 
+    // Assign the onLoad and onPageShow functions to the respective window events
   window.onload = onLoad;
   window.onpageshow = onPageShow;
 
+   // Re-initialize the theme and execute onLoad and onPageShow functions after Astro.js swaps out the page
   document.addEventListener('astro:after-swap', () => {
     initTheme();
     onLoad();

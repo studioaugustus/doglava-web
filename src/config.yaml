@@ -1,6 +1,6 @@
 site:
-  name: AstroWind
-  site: 'https://astrowind.vercel.app'
+  name: Doglava
+  site: 'https://doglava.com'
   base: '/'
   trailingSlash: false
 
@@ -9,22 +9,22 @@ site:
 # Default SEO metadata
 metadata:
   title:
-    default: AstroWind
-    template: '%s — AstroWind'
-  description: "\U0001F680 Suitable for Startups, Small Business, Sass Websites, Professional Portfolios, Marketing Websites, Landing Pages & Blogs."
+    default: Doglava
+    template: '%s — Funk Yeah'
+  description: "\U0001F680 We got the Funk"
   robots:
     index: true
     follow: true
   openGraph:
-    site_name: AstroWind
+    site_name: Doglava
     images:
-      - url: '~/assets/images/default.png'
+      - url: '~/assets/images/logo-1.png'
         width: 1200
         height: 628
     type: website
   twitter:
-    handle: '@onwidget'
-    site: '@onwidget'
+    handle: '@doglava'
+    site: '@doglava'
     cardType: summary_large_image
 
 i18n:
@@ -33,11 +33,11 @@ i18n:
 
 apps:
   blog:
-    isEnabled: true
+    isEnabled: false
     postsPerPage: 6
 
     post:
-      isEnabled: true
+      isEnabled: false
       permalink: '/%slug%' # Variables: %slug%, %year%, %month%, %day%, %hour%, %minute%, %second%, %category%
       robots:
         index: true

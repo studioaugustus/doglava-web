@@ -1,0 +1,231 @@
+---
+import '~/assets/styles/tailwind.css';
+import SiteVerification from '~/components/common/SiteVerification.astro';
+import Analytics from '~/components/common/Analytics.astro';
+import { headerData } from '~/navigation';
+import Header from '~/components/widgets/Header.astro';
+import { I18N } from '~/utils/config';
+import CustomStyles from '~/components/CustomStyles.astro';
+import CommonMeta from '~/components/common/CommonMeta.astro';
+import Metadata from '~/components/common/Metadata.astro';
+import type { MetaData as MetaDataType } from '~/types';
+import ApplyColorMode from '~/components/common/ApplyColorMode.astro';
+import BasicScripts from '~/components/common/BasicScripts.astro';
+import Splash from '~/components/widgets/Splash.astro';
+
+export interface Props {
+  metadata?: MetaDataType;
+}
+
+const { metadata = {} } = Astro.props;
+const { language, textDirection } = I18N;
+---
+
+<!doctype html>
+<html lang={language} dir={textDirection} class="2xl:text-[20px]">
+  <head>
+    <CommonMeta />
+    <CustomStyles />
+    <ApplyColorMode />
+    <Metadata {...metadata} />
+    <SiteVerification />
+    <Analytics />
+    <style>
+      @media (min-width: 992px) {
+        html.w-mod-js:not(.w-mod-ix) [data-w-id='b2fcbeb0-b893-4614-e247-f7b650bc47c2'] {
+          opacity: 0;
+        }
+      }
+      @media (max-width: 991px) and (min-width: 768px) {
+        html.w-mod-js:not(.w-mod-ix) [data-w-id='b2fcbeb0-b893-4614-e247-f7b650bc47c2'] {
+          opacity: 0;
+        }
+      }
+    </style>
+    <script is:inline>
+      !(function (window, document) {
+        const docElement = document.documentElement;
+        const touchClass = 'w-mod-touch';
+        const jsClass = 'w-mod-js';
+
+        // Always add JavaScript class
+        docElement.classList.add(jsClass);
+
+        // Add touch class if touch events are supported
+        const hasTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0;
+        if (hasTouch) {
+          docElement.classList.add(touchClass);
+        }
+      })(window, document);
+    </script>
+
+    <slot name="header">
+      <Header {...headerData} isSticky showToggleTheme />
+    </slot>
+  </head>
+
+  <body id="body" class="antialiased text-default bg-page tracking-tight">
+    <BasicScripts />
+    <style is:global>
+      img {
+        content-visibility: auto;
+      }
+    </style>
+    <div data-w-id="dac13d37-bb6f-9005-532a-7b0f835d0517" class="startframe"></div>
+    <div data-w-id="b2fcbeb0-b893-4614-e247-f7b650bc47c2" class="cursor cursor-drag"></div>
+    <Splash title="WE GOT THE FUNK" />
+    <div id="Home" class="div-block-2 homecontainer inverse">
+      <html>
+        <script is:inline>
+          window.ga =
+            window.ga ||
+            function () {
+              (ga.q = ga.q || []).push(arguments);
+            };
+          ga.l = +new Date();
+          ga('create', 'UA-105392568-1', 'auto');
+          ga('send', 'pageview');
+        </script>
+        <script is:inline>
+          // Immediately Invoked Function Expression (IIFE) to set initial classes
+          ((win, doc) => {
+            const docElem = doc.documentElement;
+            const modClass = ' w-mod-';
+            docElem.className += modClass + 'js';
+            if ('ontouchstart' in win || (win.DocumentTouch && doc instanceof DocumentTouch)) {
+              docElem.className += modClass + 'touch';
+            }
+          })(window, document);
+
+          // Function to trigger mouse events
+          function triggerMouseEvent(node, eventType) {
+            const mouseEvent = new MouseEvent(eventType, {
+              view: window,
+              bubbles: true,
+              cancelable: true,
+            });
+            node.dispatchEvent(mouseEvent);
+          }
+
+          // Setup event listener for when the window loads
+          window.addEventListener('load', () => {
+            const targetNode = document.getElementById('jimbo');
+            if (targetNode) {
+              // Simulate a natural mouse-click sequence
+              triggerMouseEvent(targetNode, 'mouseover');
+              triggerMouseEvent(targetNode, 'mousedown');
+              triggerMouseEvent(targetNode, 'mouseup');
+              triggerMouseEvent(targetNode, 'click');
+            } else {
+              console.log('*** Target node not found!');
+            }
+          });
+        </script>
+
+        <body id="body">
+          <canvas id="jimbo"></canvas>
+          <script src="~/utils/burnghost.js"></script>
+        </body>
+      </html>
+    </div>
+    <script
+      is:inline
+      src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=638a3aab24a8d5fde11c0529"
+      type="text/javascript"
+      integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+      crossorigin="anonymous"></script>
+    <script src="~/utils/doglava.js"></script>
+    <style>
+      /* When the body is hovered over, the element with class 'cursor' becomes fully opaque */
+      body:hover .cursor {
+        opacity: 100%;
+      }
+
+      /* The element with class 'cursor' is positioned at the center of the cursor's current position, 
+     does not trigger any pointer events like clicks or hovers, and is invisible by default */
+      .cursor {
+        transform: translate(-50%, -50%);
+        pointer-events: none;
+        position: fixed;
+        opacity: 0%;
+      }
+
+      * {
+        user-select: none;
+      }
+
+      /* All elements on the page cannot be selected by the user */
+
+      /* The canvas element takes up the full width and height of its parent */
+      canvas {
+        width: 100%;
+        height: 100%;
+      }
+
+      .guitarlogo {
+        pointer-events: none;
+      }
+
+      /* The text color of the element with class 'hide' is black */
+      .hide {
+        color: #000000;
+      }
+    </style>
+    <script is:inline>
+      $(document).ready(function () {
+        const $cursor = $('.cursor');
+        let isDragging = false; // Flag to indicate dragging
+        let splatterz = 0; // Ensure this variable is defined if it's used
+
+        // Function to update cursor position and potentially toggle inverse class
+        function updateCursorPosition(e) {
+          $cursor.css({
+            top: e.clientY + 'px',
+            left: e.clientX + 'px',
+          });
+          if (isDragging) {
+            // Check if dragging
+            $('.homecontainer').addClass('inverse');
+          }
+        }
+
+        // Initialize dragging state when the mouse is pressed down
+        $(window).on('mousedown', function () {
+          isDragging = true; // Start dragging
+        });
+
+        // Track mouse movement to update cursor position and handle dragging
+        $(window).on('mousemove', updateCursorPosition);
+
+        // End dragging state and remove inverse class when mouse is released
+        $(window).on('mouseup', function () {
+          isDragging = false; // Stop dragging
+          $('.homecontainer').removeClass('inverse');
+        });
+
+        // Handling touch interaction
+        $('body').on('touchstart', function () {
+          if (splatterz === 0) {
+            $('.startframe').addClass('hidden');
+            $cursor.addClass('mobilehide');
+            multipleSplats(parseInt(Math.random() * 20) + 10);
+            splatterz++;
+            console.log(splatterz);
+          }
+        });
+
+        // Interactions with an element (make sure the selector is correct)
+        $('.splashbutton')
+          .mouseenter(function () {
+            $cursor.addClass('splashbutton');
+          })
+          .mouseleave(function () {
+            $cursor.removeClass('splashbutton');
+          })
+          .mousedown(function () {
+            multipleSplats(parseInt(Math.random() * 20) + 10);
+          });
+      });
+    </script>
+  </body>
+</html>

@@ -1,54 +1,81 @@
 ---
-import Layout from '~/layouts/PageLayout.astro';
-import HeroText from '~/components/widgets/HeroText.astro';
-import ContactUs from '~/components/widgets/Contact.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Stats from '~/components/widgets/Stats.astro';
 import Testimonials from '~/components/widgets/Testimonials.astro';
+import Layout from '~/layouts/PageLayout.astro';
 
 const metadata = {
-  title: 'Contact',
+  title: 'Listen',
 };
 ---
 
 <Layout metadata={metadata}>
-  <!-- HeroText Widget ******************* -->
 
-  <HeroText tagline="Let's Connect!" title="Contact" />
+  <!-- Hero Widget ******************* -->
 
-  <ContactUs
-    title="Give us pets!"
-    subtitle="Interested in booking a special event? Include your potential date, location, and budget. We do tricks too!"
-    inputs={[
-      {
-        type: 'text',
-        name: 'name',
-        label: 'Name',
-      },
-      {
-        type: 'email',
-        name: 'email',
-        label: 'Email',
-      },
+  <Hero
+    tagline="Listen"
+  >
+    <Fragment slot="title">
+      WE GOT THE 
+      <span class="text-accent"> FUNK</span>
+    </Fragment>
+
+    <Fragment slot="subtitle">
+     Funking up the midwest since 2017. <br> We play on the streets, we play for treats, and we play for keeps! </br> 
+    </Fragment>
+
+    <Fragment slot="image">
+      <div class="relative h-0 pb-[56.25%] mt-4 mb-4">
+        <iframe
+          width="560"
+          height="315"
+          src="https://www.youtube.com/embed/lI7oRzeqMPk"
+          title="Doglava Sunday Sounds"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture;"
+          allowfullscreen
+          class="absolute top-0 left-0 w-full h-full"
+        >
+        </iframe>
+      </div>
+    </Fragment>
+    
+    <Fragment slot="image">
+      <div class="relative h-0 pb-[56.25%]">
+        <iframe
+          width="560"
+          height="315"
+          src="https://www.youtube.com/embed/fmC5DdRAOco?si=veT6D_U2WRWEdMDT"
+          title="Doglava Sunday Sounds"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture;"
+          allowfullscreen
+          class="absolute top-0 left-0 w-full h-full"
+        >
+        </iframe>
+      </div>
+    </Fragment>
+   
+  </Hero>
+
+  <!-- Stats Widget ****************** -->
+
+  <Stats
+    stats={[
+      { title: 'Listens', amount: '420K' },
+      { title: 'Follows', amount: '69K' },
+      { title: 'Fans', amount: 'Like 13' },
+      { title: 'Earnings', amount: 'LOL' },
     ]}
-    textarea={{
-      label: 'Message',
-    }}
-    disclaimer={{
-      label:
-        'By submitting this contact form, you acknowledge and agree to the collection of your personal information.',
-    }}
-    description="We will get back to you within 24 business hours."
   />
-
-  <!-- Features2 Widget ************** -->
-
-  <Testimonials
+    <Testimonials
     title="Fan(tastic) Reviews"
     subtitle="We probably didn't even pay these people!"
     testimonials={[
       {
         testimonial: `They are supreme pieces of shit. They usually spend more on booze than we pay them. Highly recommend!`,
         name: 'Kilroy',
-        job: 'Nice Guy',
+        job: "Nice Guy",
         image: {
           src: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
           alt: 'Kilroy Image',
@@ -101,4 +128,23 @@ const metadata = {
       },
     ]}
   />
+  <CallToAction
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Book Today',
+        href: 'mailto:booking@doglava.com?subject=Booking%20Request',
+        target: '_blank',
+        icon: 'tabler:book',
+      },
+    ]}
+  >
+    <Fragment slot="title">
+      Doglava needs pets!
+    </Fragment>
+
+    <Fragment slot="subtitle">
+     Support struggling musicians. Dogs gotta eat!
+    </Fragment>
+  </CallToAction>
 </Layout>

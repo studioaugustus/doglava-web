@@ -1,0 +1,57 @@
+---
+// Import necessary components and types
+import WidgetWrapper from '../ui/WidgetWrapper.astro';
+import type { Widget } from '~/types';
+import Headline from '~/components/ui/Headline.astro';
+import Button from '~/components/ui/Button.astro'; // Ensure this is imported if not already
+import Image from '~/components/common/Image.astro';
+import splashLogo from '~/assets/images/Guitar_Dog_Lava.png';
+import { getPermalink } from '~/utils/permalinks';
+
+// Define the properties that this component accepts
+interface Props extends Widget {
+  title?: string;
+  subtitle?: string;
+  tagline?: string;
+  buttonText?: string; // Text for the button
+  buttonLink?: string; // URL for the button action
+}
+
+// Destructure the properties from Astro.props
+const {
+  title = 'Default Title',
+  subtitle = '',
+  tagline = '',
+  buttonText = 'ENTER', // Default button text
+  buttonLink = getPermalink('/intro'), // Default link for the button
+  id,
+  isDark = false,
+  classes = {},
+} = Astro.props as Props;
+---
+
+<WidgetWrapper id={id} isDark={isDark} containerClass={`max-w-6xl mx-auto ${classes?.container ?? ''}`}>
+  <div class="max-w-3xl mx-auto text-center p-20">
+    <p class="text-sm text-muted m-8">Press + Hold for Funk</p>
+    <!-- Display the logo image -->
+    <Image src={splashLogo} alt="Doglava Guitar Logo" class="guitarlogo" />
+
+    <!-- Use the Headline component to display the title, subtitle, and tagline -->
+    <Headline
+      title={title}
+      subtitle={subtitle}
+      tagline={tagline}
+      classes={{
+        container: 'mt-12 md:mb-0',
+        title: 'text-4xl md:text-4xl font-bold leading-tighter tracking-tighter mb-4 font-heading guitarlogo',
+        subtitle: 'text-xl text-muted dark:text-slate-400',
+      }}
+    />
+
+    <!-- Display the button at the bottom -->
+    <div class="mt-12">
+      <!-- Ensure this renders an <a> tag for navigation -->
+      <Button variant="primary" href={buttonLink} text={buttonText} class="splashbutton" />
+    </div>
+  </div>
+</WidgetWrapper>
