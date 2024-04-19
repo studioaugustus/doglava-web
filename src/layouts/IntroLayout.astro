@@ -12,6 +12,7 @@ import type { MetaData as MetaDataType } from '~/types';
 import ApplyColorMode from '~/components/common/ApplyColorMode.astro';
 import BasicScripts from '~/components/common/BasicScripts.astro';
 import Splash from '~/components/widgets/Splash.astro';
+import Favicons from '~/components/Favicons.astro';
 
 export interface Props {
   metadata?: MetaDataType;
@@ -25,11 +26,13 @@ const { language, textDirection } = I18N;
 <html lang={language} dir={textDirection} class="2xl:text-[20px]">
   <head>
     <CommonMeta />
+    <Favicons />
     <CustomStyles />
     <ApplyColorMode />
     <Metadata {...metadata} />
     <SiteVerification />
     <Analytics />
+
     <style>
       @media (min-width: 992px) {
         html.w-mod-js:not(.w-mod-ix) [data-w-id='b2fcbeb0-b893-4614-e247-f7b650bc47c2'] {
